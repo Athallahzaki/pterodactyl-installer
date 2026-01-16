@@ -239,7 +239,11 @@ ubuntu_dep() {
   add-apt-repository universe -y
 
   # Add PPA for PHP (we need 8.3)
-  LC_ALL=C.UTF-8 add-apt-repository -y ppa:ondrej/php
+  if [[ "$(lsb_release -rs)" != "24.04" ]]; then
+    add-apt-repository -y ppa:ondrej/php
+  else
+    echo "Ubuntu 24.04 detected — skipping PHP PPA (already installed)"
+  fi
 }
 
 debian_dep() {
