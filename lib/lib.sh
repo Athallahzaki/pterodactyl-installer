@@ -549,6 +549,10 @@ debian)
   [ "$OS_VER_MAJOR" == "13" ] && SUPPORTED=true
   export DEBIAN_FRONTEND=noninteractive
   ;;
+linuxmint)
+  [ "$OS_VER_MAJOR" == "22" ] && SUPPORTED=true
+  export DEBIAN_FRONTEND=noninteractive
+  ;;
 rocky | almalinux)
   [ "$OS_VER_MAJOR" == "8" ] && SUPPORTED=true
   [ "$OS_VER_MAJOR" == "9" ] && SUPPORTED=true
