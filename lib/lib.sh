@@ -243,7 +243,7 @@ update_repos() {
   [[ "$1" == true ]] && args="-qq"
 
   case "$OS" in
-    ubuntu | debian)
+    ubuntu | debian | linuxmint)
       output "Updating package repositories..."
       if ! apt-get update -y $args; then
         error "Failed to update repositories."
@@ -266,14 +266,14 @@ install_packages() {
   local args=""
   if [[ $2 == true ]]; then
     case "$OS" in
-    ubuntu | debian) args="-qq" ;;
+    ubuntu | debian | linuxmint) args="-qq" ;;
     *) args="-q" ;;
     esac
   fi
 
   # Eval needed for proper expansion of arguments
   case "$OS" in
-  ubuntu | debian)
+  ubuntu | debian | linuxmint)
     eval apt-get -y $args install "$1"
     ;;
   rocky | almalinux)
@@ -358,7 +358,7 @@ ask_firewall() {
   local __resultvar=$1
 
   case "$OS" in
-  ubuntu | debian)
+  ubuntu | debian | linuxmint)
     echo -e -n "* Do you want to automatically configure UFW (firewall)? (y/N): "
     read -r CONFIRM_UFW
 
@@ -379,7 +379,7 @@ ask_firewall() {
 
 install_firewall() {
   case "$OS" in
-  ubuntu | debian)
+  ubuntu | debian | linuxmint)
     output ""
     output "Installing Uncomplicated Firewall (UFW)"
 
@@ -412,7 +412,7 @@ install_firewall() {
 
 firewall_allow_ports() {
   case "$OS" in
-  ubuntu | debian)
+  ubuntu | debian | linuxmint)
     for port in $1; do
       ufw allow "$port"
     done
