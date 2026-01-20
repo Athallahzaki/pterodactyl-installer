@@ -2,6 +2,12 @@
 
 This project follows the [semantic versioning](https://semver.org) convention. Changelog points should be divided into fixed, changed, or added.
 
+## v1.2.1 (released on 2026-01-21)
+
+### Added
+
+-  all: Add Mint 22 support
+
 ## v1.2.0 (released on 2025-09-24)
 
 ### Fixed
